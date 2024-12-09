@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>약국 검색</title>
+</head>
+<body>
+<h1>약국 검색</h1>
+
+<!-- 검색 폼 -->
+<form action="/pharmacy" method="get">
+    <label for="address1">주소:</label>
+    <input type="text" id="address1" name="address1" placeholder="서울특별시" required>
+
+    <button type="submit">검색</button>
+</form>
+
+<h2>검색 결과</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>주소</th>
+        <th>진료요일</th>
+        <th>기관명</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pharmacy : ${pharmacyList}">
+        <td th:text="${pharmacy['address']}"></td>
+        <td th:text="${pharmacy['dayOfWeek']}"></td>
+        <td th:text="${pharmacy['pharmacyName']}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
